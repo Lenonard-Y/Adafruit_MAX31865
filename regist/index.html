@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wecode网站注册页面</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+</head>
+<script type ="text/javascript">
+    $(function(){
+        $("#loginBut").click(function(){
+            var input_user =$("#input_user").val();
+            var input_phone =$("#input_phone").val();
+            var pattern = /^1[0-9]{10}$/;       //phone的正则表达式
+            var pass = $("#input_pass1").val();
+            if(!input_user){
+                $ ("#zhushi_user").html("用户名不能为空！");
+                $ ("#input_user").focus();
+            }
+             else if(!pattern.test(input_phone))
+            {
+                $ ("#zhushi_user").html("请输入11位手机号！");
+                $ ("#input_phone").focus();
+            }
+            else if (pass.length>12||pass.length<8)
+            {
+                $ ("#zhushi_user").html("请输入8至12位密码！");
+                $ ("#input_pass1").focus();
+            }
+            
+            else if(input_user === "admin" && input_phone === "15111111111" && pass === "12345678")
+            {
+                alert("success");
+            }
+            else
+            {
+                $ ("#zhushi_user").html("用户名或者密码错误");
+            }
+        })
+})     
+</script>
+<body>
+    <div class="left">
+  
+        <div class="sologan">
+            <h1>wecode少儿编程</h1>
+            <p>欢迎各位新同学加入wecode的大家庭</p>
+        </div>
+        <div class="footer">
+            <p>帮助中心｜wecode123.com/</p>
+        </div>
+    </div>
+
+    <div class="right">
+            <table>
+                <caption>欢迎登陆</caption>
+                <tr>
+                    <td>已经有账号？<a href="https://www.wecode123.com/">登陆</a></td>
+                </tr>
+                <tr>
+                    <td><label for="">用户名</label><input type="text" id="input_user" style="width:330px;" ></input></td>
+                </tr>
+            
+                <tr>
+                    <td>
+                        <label for="">手机号</label><input type="text"  id="input_phone"style="width:330px;"></input>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="">密&nbsp;&nbsp;&nbsp;&nbsp;码</label><input type="password" id="input_pass1"style="width:330px;"></input>
+                    </td> 
+                </tr>
+                <tr>
+                    <td>
+                        <div><span id="zhushi_user"></span><br></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="">验证码</label>
+                    </td>
+                        <td> 
+                            <input type="text" class="input" required="required" id="Yzm" placeholder="请输入验证码" >
+                        </td>
+                        <td>
+                        <input type="button" id="code" value="点我验证"  class="input-mini" onclick="createCode()"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="resgit" id="loginBut">立即登录</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="" id="" checked class="check">阅读并接受《用户协议》、《用户隐私协议》
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+</body>
+
+
+</html>
